@@ -6,12 +6,14 @@ import { LoginComponent } from './components/login/login.component';
 
 import { AuthGuard } from './guards/auth/auth.guard';
 import { LootGuard } from './guards/loot/loot.guard';
+import { OrlyGuard } from './guards/orly/orly.guard';
 
 const routes: Routes = [
   {
     path: 'loot',
     component: LootComponent,
-    canActivate: [AuthGuard, LootGuard]
+    canActivate: [AuthGuard, LootGuard],
+    canDeactivate: [OrlyGuard]
   },
   { path: 'login', component: LoginComponent },
   { path: '', redirectTo: '/loot', pathMatch: 'full' },

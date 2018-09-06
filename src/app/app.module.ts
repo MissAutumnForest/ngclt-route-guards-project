@@ -8,11 +8,13 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './components/login/login.component';
 import { LootComponent } from './components/loot/loot.component';
 
+import { OrlyGuard } from './guards/orly/orly.guard';
+
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    LootComponent
+    LootComponent,
   ],
   imports: [
     BrowserModule,
@@ -20,7 +22,9 @@ import { LootComponent } from './components/loot/loot.component';
     FormsModule,
     ReactiveFormsModule
   ],
-  providers: [],
+  providers: [
+    OrlyGuard
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

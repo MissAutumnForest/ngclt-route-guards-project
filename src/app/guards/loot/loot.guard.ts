@@ -10,18 +10,20 @@ export class LootGuard implements CanActivate {
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
       const user = JSON.parse(localStorage.getItem('user'));
+      let loot = '';
 
-      if (user.type === "admin") {
-        localStorage.setItem('loot', '9001');
-
+      if (user.type === 'admin') {
+        loot = '9001';
       } else if (user.type === 'paid_user') {
-        localStorage.setItem('loot', '500');
-
+        loot = '500';
+      } else if (user.type === 'dragon') {
+        loot = '100000000000000';
       } else {
-        localStorage.setItem('loot', '0');
-
+        loot = '-100'
       }
 
+      localStorage.setItem('loot', loot);
+
       return true;
-    }
+  }
 }
